@@ -18,4 +18,5 @@ langchain_chroma
 langchainhub
 pypdf
 rapidocr-onnxruntime
+pysqlite3-binary
 requests

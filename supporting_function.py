@@ -3,6 +3,7 @@ import os
 import streamlit as st 
 from dotenv import load_dotenv
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api.proxies import WebshareProxyConfig
 import time
 
 
@@ -35,7 +36,13 @@ def extract_video_id(url):
 
 # Function to get transcript from the video.
 def get_transcript(video_id, language):
-    ytt_api = YouTubeTranscriptApi()
+    # ytt_api = YouTubeTranscriptApi()
+    ytt_api = YouTubeTranscriptApi(
+        proxy_config=WebshareProxyConfig(
+            proxy_username="uzpwctup",
+            proxy_password="7i54jgtnjnxk"
+        )
+    )
     try:
         transcript = ytt_api.fetch(video_id, languages=[language])
         full_transcript = " ".join([i.text for i in transcript])
